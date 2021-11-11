@@ -5,12 +5,17 @@ import Home from './Pages/Home/Home';
 import Shop from './Pages/Shop/Shop';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register'
+import AuthProvider from './Context/AuthProvider';
+import Navigation from './Pages/Shared/Navigation';
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
+       
       
       <BrowserRouter>
+      <Navigation></Navigation>
           <Switch>
             <Route exact path="/">
               <Home></Home>
@@ -26,6 +31,7 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
+        </AuthProvider>
      
     </div>
   );

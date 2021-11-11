@@ -1,13 +1,12 @@
 import React from 'react';
 import Footer from '../Shared/Footer';
 import Navigation from '../Shared/Navigation'
-import Header from './Header/Header';
+import MainSection from './MainSection/MainSection';
 
 const Home = () => {
     return (
         <div>
-            <Navigation></Navigation>
-            <Header></Header>
+            <MainSection></MainSection>
             <Footer></Footer>
             
         </div>

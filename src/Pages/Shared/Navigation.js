@@ -17,6 +17,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Button } from '@mui/material';
+import useAuth from '../../Hooks/useAuth';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -63,6 +64,7 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
 const Navigation = () => {
+  const {user,logOut}=useAuth()
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -209,9 +211,13 @@ const Navigation = () => {
               >
                 <AccountCircle />
               </IconButton>
-              <Link to="/login" style={{textDecoration:"none",paddingTop:"5px"}}> <Button sx={{color:'black'}} variant="text">Login</Button></Link>
+            {user.email?
+              <Button onClick={logOut} sx={{color:'black'}} variant="text">LogOut</Button>
+            : <Link to="/login" style={{textDecoration:"none",paddingTop:"5px"}}> <Button sx={{color:'black'}} variant="text">Login</Button></Link>
+            }
              
-              <Button sx={{color:'black'}} variant="text">LogOut</Button>
+             
+              
 
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

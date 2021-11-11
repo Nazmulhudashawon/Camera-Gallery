@@ -13,8 +13,8 @@ const Shop = () => {
     },[])
     return (
         <div>
-            <Navigation></Navigation>
-            <h1>Discover a world of visual expression</h1>
+            
+            <h3>HOT NEW PRODUCTS</h3>
             <Container>
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>

@@ -8,13 +8,13 @@ import {
   } from '@mui/material';
   import React, { useState } from 'react';
   import { NavLink, useHistory, useLocation } from 'react-router-dom';
-//   import useAuth from '../../../hooks/useAuth';
+  import useAuth from '../../Hooks/useAuth.js';
   
   const Login = () => {
     const [loginData, setLoginData] = useState({});
     const location=useLocation();
     const history=useHistory()
-    // const { user, login, autherror, isloading } = useAuth();
+    const { user, login, autherror, isloading } = useAuth();
     const handleonBlur = (e) => {
       const field = e.target.name;
       const value = e.target.value;
@@ -24,7 +24,7 @@ import {
     };
     const hndlesubmitlogin = (e) => {
       e.preventDefault();
-    //   login(loginData.email, loginData.password,location, history);
+      login(loginData.email, loginData.password,location, history);
     };
     return (
       <Container>
@@ -66,9 +66,9 @@ import {
                 </Button>
               </NavLink>
             </form>
-            {/* {isloading && <CircularProgress />}
+            {isloading && <CircularProgress />}
             {user?.email && <Alert severity="success">login is success</Alert>}
-    {autherror && <Alert severity="error">{autherror}</Alert>*/}
+    {autherror && <Alert severity="error">{autherror}</Alert>}
 
       </Container> 
     );
