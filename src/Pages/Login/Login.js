@@ -6,6 +6,7 @@ import {
     TextField,
     Typography,
   } from '@mui/material';
+import { typography } from '@mui/system';
   import React, { useState } from 'react';
   import { NavLink, useHistory, useLocation } from 'react-router-dom';
   import useAuth from '../../Hooks/useAuth.js';
@@ -14,7 +15,7 @@ import {
     const [loginData, setLoginData] = useState({});
     const location=useLocation();
     const history=useHistory()
-    const { user, login, autherror, isloading } = useAuth();
+    const { user, login, autherror, isloading,googleSignin } = useAuth();
     const handleonBlur = (e) => {
       const field = e.target.name;
       const value = e.target.value;
@@ -26,12 +27,15 @@ import {
       e.preventDefault();
       login(loginData.email, loginData.password,location, history);
     };
+    const handlegoogleSignin=()=>{
+      googleSignin()
+    }
     return (
       <Container>
-            <Typography variant="h6">Login</Typography>
-            <form onSubmit={hndlesubmitlogin}>
+            <Typography sx={{mt:8}} variant="h5">Login</Typography>
+            <form style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:"center"}} onSubmit={hndlesubmitlogin}>
               <TextField
-                sx={{ width: '75%', m: '2', py: 4 }}
+                sx={{ width: '50%', m: '2', py: 4 }}
                 id="standard-basic"
                 label="Your Email"
                 name="email"
@@ -39,7 +43,7 @@ import {
                 variant="standard"
               />
               <TextField
-                sx={{ width: '75%', m: '2', py: 4 }}
+                sx={{ width: '50%', m: '2', py: 4 }}
                 id="standard-basic"
                 type="password"
                 label="Password"
@@ -47,24 +51,26 @@ import {
                 onBlur={handleonBlur}
                 variant="standard"
               />
-  
+              <NavLink style={{ textDecoration: 'none', }} to="/register">
+              <Button variant="text">Not Registerd Create an account</Button>
+              </NavLink>
               <Button
                 type="submit"
-                sx={{ mt: 3, backgroundColor: '#1ac6ff', width: '75%', px: 4 }}
+                sx={{ mt: 3, backgroundColor: '#1ac6ff', width: '50%', px: 4 }}
                 variant="contained"
               >
                 Login
               </Button>
   
               <Typography variant="h6">OR</Typography>
-              <NavLink style={{ textDecoration: 'none' }} to="/register">
-                <Button
-                  sx={{ backgroundColor: '#1ac6ff', width: '75%', px: 4 }}
+              
+                <Button onClick={handlegoogleSignin}
+                  sx={{ backgroundColor: '#1ac6ff', width: '50%', px: 4 }}
                   variant="contained"
                 >
-                  Register
+                  Google Signin
                 </Button>
-              </NavLink>
+              
             </form>
             {isloading && <CircularProgress />}
             {user?.email && <Alert severity="success">login is success</Alert>}

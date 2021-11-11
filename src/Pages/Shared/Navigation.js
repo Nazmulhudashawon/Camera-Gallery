@@ -65,6 +65,7 @@ const Search = styled('div')(({ theme }) => ({
 
 const Navigation = () => {
   const {user,logOut}=useAuth()
+  console.log(user)
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -127,26 +128,8 @@ const Navigation = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+     
+     
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -193,6 +176,7 @@ const Navigation = () => {
             </Search>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Button  style={{textDecoration:"none",paddingTop:"5px"}} sx={{color:'tomato'}} variant="text">{user.displayName}</Button>
             <Link style={{textDecoration:"none",paddingTop:"5px"}} to="/"><Button sx={{color:'black'}} variant="text">Home</Button></Link>
             <Link style={{textDecoration:"none",paddingTop:"5px"}} to="/shop"><Button sx={{color:'black'}} variant="text">Shop</Button></Link>
             <Button sx={{color:'black'}} variant="text">Reviews</Button>

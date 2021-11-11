@@ -1,10 +1,11 @@
 import { useState,useEffect } from "react";
 import initializeFirebase from "../Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signOut,onAuthStateChanged,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 
 
 initializeFirebase();
 const useFirebase=()=>{
+  const provider = new GoogleAuthProvider();
     const [user, setUser]=useState({})
     const [isloading, setIsloading]=useState(true)
     const [autherror, setAutherror]=useState('')
@@ -22,7 +23,7 @@ const useFirebase=()=>{
     setAutherror(error.message)
   }).finally(()=>setIsloading(false));
     }
-    //login function
+    //email pass login function
     const login=(email,password,location, history)=>{
         signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
@@ -37,6 +38,27 @@ const useFirebase=()=>{
     const errorCode = error.code;
     setAutherror(error.message)
   }).finally(()=>setIsloading(false));;
+    }
+    //google signin
+    const googleSignin=()=>{
+      signInWithPopup(auth, provider)
+  .then((result) => {
+   
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+  
+    const user = result.user;
+    
+  }).catch((error) => {
+    
+    console.log(error.message);
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+
     }
 
     //sign-out function
@@ -67,6 +89,7 @@ const useFirebase=()=>{
         isloading,
         register,
         login,
+        googleSignin,
         logOut,
         autherror
     }

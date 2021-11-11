@@ -29,10 +29,10 @@ const Register = (props) => {
         
         <Container>
      
-          <Typography variant="h6">Register</Typography>
-          {!isloading && <form onSubmit={handlesubmitregister}>
+          <Typography sx={{mt:8}} variant="h6">Register</Typography>
+          {!isloading && <form style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:"center"}} onSubmit={handlesubmitregister}>
             <TextField
-              sx={{ width: '75%', m: '2', py: 4 }}
+              sx={{ width: '50%', m: '2', py: 4 }}
               id="standard-basic"
               label="Your Email"
               name="email"
@@ -40,7 +40,7 @@ const Register = (props) => {
               variant="standard"
             />
             <TextField
-              sx={{ width: '75%', m: '2', py: 4 }}
+              sx={{ width: '50%', m: '2', py: 4 }}
               id="standard-basic"
               type="password"
               label="Password"
@@ -49,7 +49,7 @@ const Register = (props) => {
               variant="standard"
             />
             <TextField
-              sx={{ width: '75%', m: '2', py: 4 }}
+              sx={{ width: '50%', m: '2', py: 4 }}
               id="standard-basic"
               type="password"
               label="Confirm Password"
@@ -59,7 +59,7 @@ const Register = (props) => {
             />
 
               <Button style={{ textDecoration: 'none' }} type="submit"
-                sx={{ backgroundColor: '#1ac6ff', width: '75%', px: 4 }}
+                sx={{ backgroundColor: '#1ac6ff', width: '50%', px: 4 }}
                 variant="contained"
               >
                 Register
