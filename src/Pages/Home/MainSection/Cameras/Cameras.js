@@ -5,16 +5,20 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardMedia,
-  Paper,
   Typography,
 } from '@mui/material';
+import BuyingModal from '../../../Buying Product/BuyingModal';
 
 
 const Cameras = (props) => {
   const { name, img, details, price } = props.camera;
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   return (
+    <>
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ Width: '600px', height: '490px', m:2 }}>
         <CardActionArea>
@@ -31,9 +35,11 @@ const Cameras = (props) => {
             <Typography variant="h6">{price}$</Typography>
           </CardContent>
         </CardActionArea>
-        <Button sx={{mt:2,backgroundColor:"tomato"}} color="error" variant="contained">Add To Cart</Button>
+        <Button onClick={handleOpen}sx={{mt:2,backgroundColor:"tomato"}} color="error" variant="contained">Buy Now</Button>
       </Card>
     </Grid>
+    <BuyingModal open={open} productName={name} handleClose={handleClose}></BuyingModal>
+    </>
   );
 };
 

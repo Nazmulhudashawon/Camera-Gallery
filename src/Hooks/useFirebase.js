@@ -12,7 +12,7 @@ const useFirebase=()=>{
     const auth = getAuth();
 
     const register=(email, password)=>{
-      console.log(email, password)
+     
       createUserWithEmailAndPassword(auth, email, password)
   .then((result) => {
     console.log(result)

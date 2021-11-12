@@ -9,7 +9,7 @@ import useAuth from '../../Hooks/useAuth';
 const Register = (props) => {
     const [loginData, setLoginData] = useState({});
     const {user, register, isloading,autherror}=useAuth();
-  const handleOnchange = (e) => {
+  const handleonBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
     const newLoginData = { ...loginData };
@@ -36,7 +36,7 @@ const Register = (props) => {
               id="standard-basic"
               label="Your Email"
               name="email"
-              onChange={handleOnchange}
+              onBlur={handleonBlur}
               variant="standard"
             />
             <TextField
@@ -45,7 +45,7 @@ const Register = (props) => {
               type="password"
               label="Password"
               name="password"
-              onChange={handleOnchange}
+              onBlur={handleonBlur}
               variant="standard"
             />
             <TextField
@@ -54,7 +54,7 @@ const Register = (props) => {
               type="password"
               label="Confirm Password"
               name="password2"
-              onChange={handleOnchange}
+              onBlur={handleonBlur}
               variant="standard"
             />
 

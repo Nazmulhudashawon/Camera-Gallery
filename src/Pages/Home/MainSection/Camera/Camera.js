@@ -8,7 +8,7 @@ import Cameras from '../Cameras/Cameras';
 
 const Camera = () => {
     const [cameras,setCameras]=useState([])
-    // console.log(cameras)
+   
     useEffect(()=>{
         fetch('./data.json').then(res=>res.json()).then(data=>setCameras(data))
     },[])
