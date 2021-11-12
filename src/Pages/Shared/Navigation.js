@@ -210,9 +210,21 @@ const Navigation = () => {
               <AccountCircle />
             </IconButton>
             {user.email ? (
+              <Box style={{paddingTop:'5px'}}>
+                 <Link
+               to="/dashboard"
+               style={{ textDecoration: 'none', paddingTop: '5px' }}
+             >
+               {' '}
+               <Button sx={{ color: 'black' }} variant="text">
+                 DashBoard
+               </Button>
+             </Link>
               <Button onClick={logOut} sx={{ color: 'black' }} variant="text">
                 LogOut
               </Button>
+              </Box>
+              
             ) : (
               <Link
                 to="/login"

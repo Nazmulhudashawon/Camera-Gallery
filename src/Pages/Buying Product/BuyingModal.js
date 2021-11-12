@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Button } from '@mui/material';
 import useAuth from '../../Hooks/useAuth';
+import { Button } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -19,22 +19,37 @@ const style = {
 };
 
 
-const BuyingModal = ({open,handleClose,productName}) => {
+const BuyingModal = ({open,handleClose,productName,setSuccess}) => {
     const {user}=useAuth()
     const initialinfo={name:user.displayName, email:user.email}
     const [userData,setUserData]=useState(initialinfo)
    
     const handlebuyingsubmit=(e)=>{
         e.preventDefault();
-        alert("success")
+      //collect data
+      // const buying={
+      //   userData
+      // }
+      //send to server
+      fetch('http://localhost:5000/user',{method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify(userData)
+
+      }).then(res=>res.json()).then(data=>{
+        if(data.insertedId){
+        setSuccess(true)
         handleClose();
+       
+      }
+    }
+      );
+    
 
     }
     const handleonBlur = (e) => {
       const field = e.target.name;
       const value = e.target.value;
       const newData = { ...userData };
-      console.log(newData)
       newData[field] = value;
       setUserData(newData);
     };
@@ -66,6 +81,7 @@ const BuyingModal = ({open,handleClose,productName}) => {
           size="small"
         />
           <TextField
+          required
           sx={{m:1, width:"90%"}}
           id="outlined-size-small"
           placeholder="phone"

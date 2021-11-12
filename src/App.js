@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register'
 import AuthProvider from './Context/AuthProvider';
 import Navigation from './Pages/Shared/Navigation';
+import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route exact path="/register">
               <Register></Register>
+            </Route>
+            <Route exact path="/dashboard">
+              <DashBoard></DashBoard>
             </Route>
           </Switch>
         </BrowserRouter>
