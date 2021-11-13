@@ -34,7 +34,7 @@ function App() {
             <Route exact path="/register">
               <Register></Register>
             </Route>
-            <PrivateRoute exact path="/dashboard">
+            <PrivateRoute  path="/dashboard">
               <DashBoard></DashBoard>
             </PrivateRoute>
             <Route exact path="/payment">

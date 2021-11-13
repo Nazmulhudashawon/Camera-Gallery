@@ -88,6 +88,13 @@ const useFirebase = () => {
       });
   };
 
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+        .then(res => res.json())
+        .then(data => setAdmin(data.admin))
+}, [user.email])
+
   //sign-out function
   const logOut = () => {
     setIsloading(true);
@@ -137,7 +144,7 @@ const useFirebase = () => {
     logOut,
     autherror,
     admin,
-        token,
+    token,
   };
 };
 export default useFirebase;

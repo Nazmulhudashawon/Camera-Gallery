@@ -14,47 +14,67 @@ import UserInfo from '../User/UserInfo';
 import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 
-import {
-  Switch,
-  Route,
-  Link,
-  useRouteMatch
-} from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AddProducts from '../AddProduct/AddProducts';
 const drawerWidth = 240;
 
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { logOut } = useAuth();
+  const { logOut, admin } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  let { path, url } = useRouteMatch();
 
   const drawer = (
-    <div >
-      <Toolbar  />
+    <div>
+      <Toolbar />
       <Divider />
-      <List  >
-      <ListItem>
-         <Link style={{textDecoration:"none",color:"white"}} to="/"> <Button style={{color:"tomato"}}>Home</Button>
-       </Link> 
-       </ListItem>
+      <List>
         <ListItem>
-          <Button style={{color:"tomato"}}>My Order</Button>
+          <Link style={{ textDecoration: 'none', color: 'white' }} to="/">
+            {' '}
+            <Button style={{ color: 'tomato' }}>Home</Button>
+          </Link>
         </ListItem>
         <ListItem>
-          <Button  style={{color:"tomato"}}>Review</Button>
+          <Button style={{ color: 'tomato' }}>My Order</Button>
+        </ListItem>
+        <ListItem>
+          <Button style={{ color: 'tomato' }}>Review</Button>
+        </ListItem>
+        <ListItem>
+          <Link to={`${url}`}>
+            <Button color="inherit">Dashboard</Button>
+          </Link>
+        </ListItem>
+
+        {admin && <Box>
+          <ListItem>
+          <Link to={`${url}/makeAdmin`}>
+            <Button color="inherit">Make Admin</Button>
+          </Link>
         </ListItem>
 
         <ListItem>
-         <Link style={{textDecoration:"none"}} to="/payment"> <Button  style={{color:"tomato"}}>Payment</Button>
-       </Link> 
-       </ListItem>
+          <Link to={`${url}/addproduct`}>
+            <Button color="inherit">Add Product</Button>
+          </Link>
+        </ListItem></Box>}
         <ListItem>
-          <Button  style={{color:"tomato"}} onClick={logOut}>Logout</Button>
-          </ListItem>
-        
+          <Link style={{ textDecoration: 'none' }} to="/payment">
+            {' '}
+            <Button style={{ color: 'tomato' }}>Payment</Button>
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Button style={{ color: 'tomato' }} onClick={logOut}>
+            Logout
+          </Button>
+        </ListItem>
       </List>
     </div>
   );
@@ -119,8 +139,6 @@ function DashBoard(props) {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-             
-             
             },
           }}
           open
@@ -137,9 +155,17 @@ function DashBoard(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          <UserInfo></UserInfo>
-        </Typography>
+        <Switch>
+          <Route exact path={path}>
+            <UserInfo></UserInfo>
+          </Route>
+          <Route path={`${path}/makeAdmin`}>
+            <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path={`${path}/addproduct`}>
+            <AddProducts></AddProducts>
+          </Route>
+        </Switch>
       </Box>
     </Box>
   );
