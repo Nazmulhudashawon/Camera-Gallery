@@ -3,7 +3,7 @@ import React from 'react';
 const AddProducts = () => {
     return (
         <div>
-            new product
+            <h1>Select Product</h1>
             
         </div>
     );

@@ -5,7 +5,7 @@ import { Container, Typography } from '@mui/material';
 
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: 'gray' }}>
+    <div style={{ backgroundColor: 'gray',marginTop:"40px" }}>
       <Container>
         <Grid container spacing={2} sx={{my:"4"}}>
           <Grid sx={{ textAlign: 'left', ml: 3 }} item xs={2}>
@@ -21,9 +21,7 @@ const Footer = () => {
             <Typography variant="subtitle1" gutterBottom component="div">
             Email us
             </Typography>
-            <Typography variant="subtitle1" gutterBottom component="div">
-              Live Chat
-            </Typography>
+            
           </Grid>
           <Grid item xs={2}>
           <Typography variant="h6" gutterBottom component="div">
@@ -34,9 +32,6 @@ const Footer = () => {
             </Typography>
             <Typography variant="subtitle1" gutterBottom component="div">
             Shipping Process
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom component="div">
-            Privacy Policy 
             </Typography>
             <Typography variant="subtitle1" gutterBottom component="div">
             Product Warranties 
