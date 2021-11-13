@@ -187,13 +187,7 @@ const Navigation = () => {
               <Button sx={{ color: 'black' }} variant="text">
                 Shop
               </Button>
-            </Link>
-            <Button sx={{ color: 'black' }} variant="text">
-              Reviews
-            </Button>
-            <Button sx={{ color: 'black' }} variant="text">
-              My Order
-            </Button>
+            </Link>         
             <Button sx={{ color: 'black' }} variant="text">
               Photograpy Tips
             </Button>

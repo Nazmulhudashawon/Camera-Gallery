@@ -28,7 +28,7 @@ import { typography } from '@mui/system';
       login(loginData.email, loginData.password,location, history);
     };
     const handlegoogleSignin=()=>{
-      googleSignin()
+      googleSignin(location, history)
     }
     return (
       <Container>

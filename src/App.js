@@ -8,6 +8,9 @@ import Register from './Pages/Login/Register'
 import AuthProvider from './Context/AuthProvider';
 import Navigation from './Pages/Shared/Navigation';
 import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
+import PrivateRoute from './Pages/Login/PrirvateRoute/PrivateRoute';
+import Payment from './Pages/DashBoard/Payment';
+
 
 function App() {
   return (
@@ -24,15 +27,20 @@ function App() {
             <Route exact path="/shop">
               <Shop></Shop>
             </Route>
+           
             <Route exact path="/login">
               <Login></Login>
             </Route>
             <Route exact path="/register">
               <Register></Register>
             </Route>
-            <Route exact path="/dashboard">
+            <PrivateRoute exact path="/dashboard">
               <DashBoard></DashBoard>
+            </PrivateRoute>
+            <Route exact path="/payment">
+              <Payment></Payment>
             </Route>
+            
           </Switch>
         </BrowserRouter>
         </AuthProvider>

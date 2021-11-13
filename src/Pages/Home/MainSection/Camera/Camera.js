@@ -11,7 +11,7 @@ const Camera = () => {
   
    
     useEffect(()=>{
-        fetch('./data.json').then(res=>res.json()).then(data=>setCameras(data))
+        fetch('http://localhost:5000/products').then(res=>res.json()).then(data=>setCameras(data))
     },[])
     return (
         <div>

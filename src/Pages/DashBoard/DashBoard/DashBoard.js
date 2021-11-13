@@ -1,61 +1,61 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import UserInfo from '../User/UserInfo';
+import { Button } from '@mui/material';
+import useAuth from '../../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { logOut } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <div>
-      <Toolbar />
+    <div >
+      <Toolbar  />
       <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+      <List  >
+      <ListItem>
+         <Link style={{textDecoration:"none",color:"white"}} to="/"> <Button style={{color:"tomato"}}>Home</Button>
+       </Link> 
+       </ListItem>
+        <ListItem>
+          <Button style={{color:"tomato"}}>My Order</Button>
+        </ListItem>
+        <ListItem>
+          <Button  style={{color:"tomato"}}>Review</Button>
+        </ListItem>
+
+        <ListItem>
+         <Link style={{textDecoration:"none"}} to="/payment"> <Button  style={{color:"tomato"}}>Payment</Button>
+       </Link> 
+       </ListItem>
+        <ListItem>
+          <Button  style={{color:"tomato"}} onClick={logOut}>Logout</Button>
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        
       </List>
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -65,6 +65,7 @@ function DashBoard(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          // backgroundColor:"black"
         }}
       >
         <Toolbar>
@@ -98,7 +99,10 @@ function DashBoard(props) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
@@ -107,7 +111,12 @@ function DashBoard(props) {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+             
+             
+            },
           }}
           open
         >
@@ -116,17 +125,19 @@ function DashBoard(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
       >
         <Toolbar />
         <Typography paragraph>
-       <UserInfo></UserInfo>
+          <UserInfo></UserInfo>
         </Typography>
-       
       </Box>
     </Box>
   );
 }
-
 
 export default DashBoard;

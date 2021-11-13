@@ -19,6 +19,7 @@ const UserInfo = () => {
     },[])
     return (
         <TableContainer component={Paper}>
+          <h3>{userInfo.length} Product Confirmation is success</h3>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -41,7 +42,7 @@ const UserInfo = () => {
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="right">{row.phone}</TableCell>
               <TableCell align="right">{row.address}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.productName}</TableCell>
             </TableRow>
           ))}
         </TableBody>
