@@ -8,15 +8,39 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import useAuth from '../../../Hooks/useAuth';
+import { useLocation } from 'react-router';
+import { Button } from '@mui/material';
 
-const UserInfo = () => {
+const Orders = () => {
+  
     const {user}=useAuth();
     const [userInfo, setUserInfo]=useState([]);
+    const [order, setOrder]=useState([]);
+    const location=useLocation()
 
     useEffect(()=>{
         const url=`https://fast-garden-88977.herokuapp.com/order?email=${user.email}`
         fetch(url).then(res=>res.json()).then(data=>setUserInfo(data))
     },[])
+
+    //delete an user
+   const handledelete=(id)=>{
+    console.log(id)
+ const proceed=window.confirm ('are you sure want to Cancel the Product')
+ if(proceed){
+    const url=`https://fast-garden-88977.herokuapp.com/order/${id}`;
+    fetch(url, {
+       method:'DELETE'
+   }).then(res=>res.json()).then(data=>{if (data.deletedCount > 0){
+       alert("cancel success");
+       const remainingusers= order.filter(users=> users._id !==id);
+       setOrder(remainingusers);
+       window.location.reload()
+   }} )
+   
+ }      
+}
+
     return (
         <TableContainer component={Paper}>
           <h3>{userInfo.length} Product Confirmation is success</h3>
@@ -43,6 +67,7 @@ const UserInfo = () => {
               <TableCell align="right">{row.phone}</TableCell>
               <TableCell align="right">{row.address}</TableCell>
               <TableCell align="right">{row.productName}</TableCell>
+              <Button  onClick={()=>handledelete(row._id)}>Cancel Product</Button>
             </TableRow>
           ))}
         </TableBody>
@@ -51,4 +76,4 @@ const UserInfo = () => {
     );
 };
 
-export default UserInfo;
+export default Orders;

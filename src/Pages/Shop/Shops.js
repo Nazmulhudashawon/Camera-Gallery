@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import {
-  Alert,
   Button,
   Card,
   CardActionArea,
@@ -12,9 +11,7 @@ import BuyingModal from '../Buying Product/BuyingModal';
 
 
 const Shops = (props) => {
-    const { name, img, details, price } = props.camera;
-    
-    
+    const { name, img, details, price } = props.camera;  
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -41,7 +38,7 @@ const Shops = (props) => {
           <Button onClick={handleOpen} sx={{mt:2,backgroundColor:"tomato"}} color="error" variant="contained">Buy Now</Button>
         </Card>
       </Grid>
-      <BuyingModal open={open} productName={name} handleClose={handleClose}></BuyingModal>
+      <BuyingModal open={open}  productName={name} handleClose={handleClose}></BuyingModal>
       </>
     );
   };

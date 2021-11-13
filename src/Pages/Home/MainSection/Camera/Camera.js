@@ -7,7 +7,7 @@ import { Alert, Typography } from '@mui/material';
 
 const Camera = () => {
     const [cameras,setCameras]=useState([])
-    const [success, setSuccess]=useState(false)
+    // const [success, setSuccess]=useState(false)
   
    
     useEffect(()=>{
@@ -17,13 +17,13 @@ const Camera = () => {
         <div>
             <h1>Discover a world of visual expression</h1>
            <Typography sx={{ml:'40%'}}>
-           {success && <Alert severity="success">your Product buying is confirmed </Alert>}
+           {/* {success && <Alert severity="success">your Product buying is confirmed </Alert>} */}
            </Typography>
             <Container>
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
             {
-                cameras.slice(0,6).map(camera=><Cameras key={camera.key} camera={camera} setSuccess={setSuccess}></Cameras>)
+                cameras.slice(0,6).map(camera=><Cameras key={camera.key} camera={camera} ></Cameras>)
             }
              </Grid>
       </Box>

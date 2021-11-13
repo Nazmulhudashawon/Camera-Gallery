@@ -9,7 +9,6 @@ import AuthProvider from './Context/AuthProvider';
 import Navigation from './Pages/Shared/Navigation';
 import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 import PrivateRoute from './Pages/Login/PrirvateRoute/PrivateRoute';
-import Payment from './Pages/DashBoard/Payment';
 
 
 function App() {
@@ -37,9 +36,7 @@ function App() {
             <PrivateRoute  path="/dashboard">
               <DashBoard></DashBoard>
             </PrivateRoute>
-            <Route exact path="/payment">
-              <Payment></Payment>
-            </Route>
+            
             
           </Switch>
         </BrowserRouter>

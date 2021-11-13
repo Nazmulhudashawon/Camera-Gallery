@@ -10,13 +10,18 @@ import ListItem from '@mui/material/ListItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import UserInfo from '../User/UserInfo';
+import orders from '../order/Orders';
 import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
-
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddProducts from '../AddProduct/AddProducts';
+import ManageOrders from '../ManageOrders/ManageOrders';
+import Payment from '../Payment';
+import Orders from '../order/Orders';
+import MyOrders from '../MyOrders/MyOrders';
+import AdminRoute from '../AdminRoute/AdminRoute';
+
 const drawerWidth = 240;
 
 function DashBoard(props) {
@@ -30,48 +35,62 @@ function DashBoard(props) {
   let { path, url } = useRouteMatch();
 
   const drawer = (
-    <div>
-      <Toolbar />
+    <div style={{backgroundColor:"#484d78"}}>
+      <Toolbar style={{backgroundColor:"#484d78"}}  />
       <Divider />
-      <List>
-        <ListItem>
-          <Link style={{ textDecoration: 'none', color: 'white' }} to="/">
+      <List style={{display:'flex',flexDirection:'column',alignItems:'left',}}>
+        <ListItem >
+          <Link style={{ textDecoration: 'none'}} to="/">
             {' '}
-            <Button style={{ color: 'tomato' }}>Home</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Button style={{ color: 'tomato' }}>My Order</Button>
-        </ListItem>
-        <ListItem>
-          <Button style={{ color: 'tomato' }}>Review</Button>
-        </ListItem>
-        <ListItem>
-          <Link to={`${url}`}>
-            <Button color="inherit">Dashboard</Button>
+            <Button variant="contained">Home</Button>
           </Link>
         </ListItem>
 
-        {admin && <Box>
-          <ListItem>
-          <Link to={`${url}/makeAdmin`}>
-            <Button color="inherit">Make Admin</Button>
+        <ListItem >
+          <Link to={`${url}`} style={{ textDecoration: 'none'}}>
+            <Button variant="contained">Dashboard</Button>
           </Link>
         </ListItem>
 
+        {admin? (
+          <Box>
+            <ListItem>
+              <Link to={`${url}/makeAdmin`} style={{ textDecoration: 'none'}}>
+                <Button variant="contained">Make Admin</Button>
+              </Link>
+            </ListItem>
+
+            <ListItem>
+              <Link to={`${url}/addproduct`} style={{ textDecoration: 'none'}}>
+                <Button variant="contained">Add Product</Button>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link to={`${url}/manageorder`} style={{ textDecoration: 'none'}}>
+                <Button variant="contained">Manage Orders</Button>
+              </Link>
+            </ListItem>
+          </Box>
+        ) : (
+          <Box>
+            <ListItem>
+            <Link to={`${url}/myorder`} style={{ textDecoration: 'none'}}>
+                <Button variant="contained">My Order</Button>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Button variant="contained">Review</Button>
+            </ListItem>
+            <ListItem>
+              <Link to={`${url}/pay`} style={{ textDecoration: 'none'}}>
+                <Button variant="contained">Pay</Button>
+              </Link>
+            </ListItem>
+          </Box>
+        )}
+
         <ListItem>
-          <Link to={`${url}/addproduct`}>
-            <Button color="inherit">Add Product</Button>
-          </Link>
-        </ListItem></Box>}
-        <ListItem>
-          <Link style={{ textDecoration: 'none' }} to="/payment">
-            {' '}
-            <Button style={{ color: 'tomato' }}>Payment</Button>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Button style={{ color: 'tomato' }} onClick={logOut}>
+          <Button style={{ backgroundColor: 'tomato' }} variant="contained" onClick={logOut}>
             Logout
           </Button>
         </ListItem>
@@ -90,7 +109,7 @@ function DashBoard(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          // backgroundColor:"black"
+          backgroundColor:"#484d78"
         }}
       >
         <Toolbar>
@@ -103,8 +122,14 @@ function DashBoard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            DashBoard
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block', fontWeight: '700' } }}
+          >
+            CAMERA{' '}
+            <span style={{ color: 'tomato', fontWeight: '700' }}>GALLERY</span>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -132,13 +157,14 @@ function DashBoard(props) {
         >
           {drawer}
         </Drawer>
-        <Drawer
+        <Drawer 
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
+              backgroundColor:"#484d78"
             },
           }}
           open
@@ -157,13 +183,22 @@ function DashBoard(props) {
         <Toolbar />
         <Switch>
           <Route exact path={path}>
-            <UserInfo></UserInfo>
+            <Orders></Orders>
           </Route>
-          <Route path={`${path}/makeAdmin`}>
+          <AdminRoute path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
-          </Route>
-          <Route path={`${path}/addproduct`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/addproduct`}>
             <AddProducts></AddProducts>
+          </AdminRoute>
+          <Route path={`${path}/manageorder`}>
+            <ManageOrders></ManageOrders>
+          </Route>
+          <Route path={`${path}/pay`}>
+            <Payment></Payment>
+          </Route>
+          <Route path={`${path}/myorder`}>
+            <MyOrders></MyOrders>
           </Route>
         </Switch>
       </Box>

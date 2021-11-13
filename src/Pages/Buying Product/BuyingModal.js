@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-const BuyingModal = ({ open, handleClose, productName, setSuccess }) => {
+const BuyingModal = ({ open, handleClose, productName}) => {
   const { user } = useAuth();
   const initialinfo = { name: user.displayName, email: user.email };
   const [userData, setUserData] = useState(initialinfo);
@@ -39,10 +39,11 @@ const BuyingModal = ({ open, handleClose, productName, setSuccess }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          setSuccess(true);
-          handleClose();
+          
+        //  setSuccess(true)
         }
       });
+      handleClose();
   };
   const handleonBlur = (e) => {
     const field = e.target.name;

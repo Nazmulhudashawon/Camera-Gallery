@@ -11,7 +11,7 @@ import {
 import BuyingModal from '../../../Buying Product/BuyingModal';
 
 
-const Cameras = ({camera, setSuccess }) => {
+const Cameras = ({camera }) => {
   const{name,price,details,img}=camera
  
   const [open, setOpen] = React.useState(false);
@@ -41,7 +41,7 @@ const Cameras = ({camera, setSuccess }) => {
         <Button onClick={handleOpen}sx={{mt:2,backgroundColor:"tomato"}} color="error" variant="contained">Buy Now</Button>
       </Card>
     </Grid>
-    <BuyingModal setSuccess={setSuccess} open={open} productName={name} handleClose={handleClose}></BuyingModal>
+    <BuyingModal  open={open} productName={name} handleClose={handleClose}></BuyingModal>
     </>
   );
 };
