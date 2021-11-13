@@ -5,7 +5,7 @@ import { Container, Typography } from '@mui/material';
 
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: 'gray',marginTop:"40px" }}>
+    <div style={{ backgroundColor: '#rgb(255 255 255)',marginTop:"90px",borderTop:"2px solid black",paddingTop:"20px" }}>
       <Container>
         <Grid container spacing={2} sx={{my:"4"}}>
           <Grid sx={{ textAlign: 'left', ml: 3 }} item xs={2}>
@@ -83,14 +83,13 @@ const Footer = () => {
           </Grid>
         </Grid>
         
-       
-          
-       
+     
       </Container>
-      <Typography sx={{m:"2"}} variant="h6" gutterBottom component="div">
+      <Typography style={{marginTop:"30px", backgroundColor:"gray"}} sx={{mt:"4"}} variant="h6" gutterBottom component="div">
         Copyright © 2002-2020,Camera Gallery, C&A Marketing Inc. All Rights
           Reserved.
             </Typography>
+     
     </div>
   );
 };
