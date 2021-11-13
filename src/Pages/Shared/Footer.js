@@ -82,10 +82,9 @@ const Footer = () => {
             </Typography>
           </Grid>
         </Grid>
-        
-     
+   
       </Container>
-      <Typography style={{marginTop:"30px", backgroundColor:"gray"}} sx={{mt:"4"}} variant="h6" gutterBottom component="div">
+      <Typography style={{marginTop:"30px",paddingBottom:"10px"}} sx={{mt:"4"}} variant="h6" gutterBottom component="div">
         Copyright © 2002-2020,Camera Gallery, C&A Marketing Inc. All Rights
           Reserved.
             </Typography>
