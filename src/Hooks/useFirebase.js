@@ -8,23 +8,38 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile, 
+  getIdToken,
 } from 'firebase/auth';
 
 initializeFirebase();
 const useFirebase = () => {
   const provider = new GoogleAuthProvider();
   const [user, setUser] = useState({});
+  console.log(user)
+  const [admin, setAdmin] = useState(false);
+    const [token, setToken] = useState('');
   const [isloading, setIsloading] = useState(true);
   const [autherror, setAutherror] = useState('');
   const auth = getAuth();
 
-  const register = (email, password, history) => {
+  const register = (email, password, name, history) => {
     setIsloading(true);
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result);
         setAutherror('');
+        const newUser = { email, displayName: name };
+                setUser(newUser);
+                // save user to the database
+                saveUser(email, name, 'POST');
+                // send name to firebase after creation
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                }).catch((error) => {
+                });
         history.replace("/");
       })
       .catch((error) => {
@@ -55,10 +70,11 @@ const useFirebase = () => {
     setIsloading(true);
     signInWithPopup(auth, provider)
       .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-
         const user = result.user;
+       
+        saveUser(user.email, user.displayName, 'PUT');
+
+       
         setAutherror('');
         const destination = location?.state?.from || '/';
         history.replace(destination);
@@ -98,6 +114,20 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, []);
 
+  //save user to db
+  const saveUser=(email, displayName, method)=>{
+    const user = { email, displayName };
+    fetch('http://localhost:5000/users', {
+        method: method,
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then()
+}
+
+
   return {
     user,
     isloading,
@@ -106,6 +136,8 @@ const useFirebase = () => {
     googleSignin,
     logOut,
     autherror,
+    admin,
+        token,
   };
 };
 export default useFirebase;

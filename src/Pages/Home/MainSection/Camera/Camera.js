@@ -11,7 +11,7 @@ const Camera = () => {
   
    
     useEffect(()=>{
-        fetch('http://localhost:5000/products').then(res=>res.json()).then(data=>setCameras(data))
+        fetch('https://fast-garden-88977.herokuapp.com/products').then(res=>res.json()).then(data=>setCameras(data))
     },[])
     return (
         <div>

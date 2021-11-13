@@ -14,7 +14,7 @@ const UserInfo = () => {
     const [userInfo, setUserInfo]=useState([]);
 
     useEffect(()=>{
-        const url=`http://localhost:5000/user?email=${user.email}`
+        const url=`https://fast-garden-88977.herokuapp.com/order?email=${user.email}`
         fetch(url).then(res=>res.json()).then(data=>setUserInfo(data))
     },[])
     return (

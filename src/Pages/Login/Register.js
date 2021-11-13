@@ -23,7 +23,7 @@ const Register = (props) => {
           alert("password did not match the pass")
           return
    }
-   register(loginData.email, loginData.password, history)
+   register(loginData.email, loginData.password, loginData.name, history)
   };
     return (
         
@@ -31,6 +31,14 @@ const Register = (props) => {
      
           <Typography sx={{mt:8}} variant="h6">Register</Typography>
           {!isloading && <form style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:"center"}} onSubmit={handlesubmitregister}>
+            <TextField
+              sx={{ width: '50%', m: '2', py: 4 }}
+              id="standard-basic"
+              label="Name"
+              name="name"
+              onBlur={handleonBlur}
+              variant="standard"
+            />
             <TextField
               sx={{ width: '50%', m: '2', py: 4 }}
               id="standard-basic"

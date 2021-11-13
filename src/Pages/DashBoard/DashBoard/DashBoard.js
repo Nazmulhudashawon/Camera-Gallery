@@ -13,8 +13,13 @@ import Typography from '@mui/material/Typography';
 import UserInfo from '../User/UserInfo';
 import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
-import { Link } from 'react-router-dom';
 
+import {
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
 const drawerWidth = 240;
 
 function DashBoard(props) {

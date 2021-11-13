@@ -31,7 +31,7 @@ const BuyingModal = ({ open, handleClose, productName, setSuccess }) => {
       productName: productName,
     };
     //send to server
-    fetch('http://localhost:5000/user', {
+    fetch('https://fast-garden-88977.herokuapp.com/order', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(buying),
