@@ -1,8 +1,11 @@
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import React from 'react';
+import useAuth from '../../../Hooks/useAuth';
 
 const AddProducts = () => {
+    const { user, isloading } = useAuth();
+    if (isloading) { return <CircularProgress /> }
     return (
         <div>
              <form style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:"center"}} >
