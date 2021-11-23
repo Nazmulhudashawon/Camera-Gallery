@@ -154,6 +154,7 @@ const Navigation = () => {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block', fontWeight: '700' } }}
           >
+            
             CAMERA{' '}
             <span style={{ color: 'tomato', fontWeight: '700' }}>GALLERY</span>
           </Typography>

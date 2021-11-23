@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Cameras from '../Cameras/Cameras';
 import { Alert, Typography } from '@mui/material';
+import Fade from 'react-reveal/Fade';
 
 const Camera = () => {
     const [cameras,setCameras]=useState([])
@@ -15,7 +16,10 @@ const Camera = () => {
     },[])
     return (
         <div>
-            <h1>Discover a world of visual expression</h1>
+             <Fade left>
+             <h1>Discover a world of visual expression</h1>
+        </Fade>
+           
            <Typography sx={{ml:'40%'}}>
            {/* {success && <Alert severity="success">your Product buying is confirmed </Alert>} */}
            </Typography>

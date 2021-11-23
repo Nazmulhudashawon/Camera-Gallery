@@ -1,14 +1,13 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Container, Typography } from '@mui/material';
 
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: '#rgb(255 255 255)',marginTop:"90px",borderTop:"2px solid black",paddingTop:"20px" }}>
+    <div style={{ backgroundColor: 'black',marginTop:"90px",borderTop:"2px solid black",paddingTop:"20px",color:"gray" }}>
       <Container>
         <Grid container spacing={2} sx={{my:"4"}}>
-          <Grid sx={{ textAlign: 'left', ml: 3 }} item xs={2}>
+          <Grid sx={{ textAlign: 'left', ml: 3}} item xs={2}>
             <Typography variant="h6" gutterBottom component="div">
               Customer Services
             </Typography>
@@ -72,19 +71,19 @@ const Footer = () => {
           Follow Us
             </Typography>
           <Typography variant="subtitle" gutterBottom component="div">
-          Facebok
+          Facebook
             </Typography>
           <Typography variant="subtitle" gutterBottom component="div">
           Tweeter
             </Typography>
           <Typography variant="subtitle" gutterBottom component="div">
-          Instragram
+          Instagram
             </Typography>
           </Grid>
         </Grid>
    
       </Container>
-      <Typography style={{marginTop:"30px",paddingBottom:"10px",}} sx={{mt:"4"}} variant="h6" gutterBottom component="div">
+      <Typography style={{marginTop:"30px",paddingBottom:"10px",}} sx={{mt:"4"}} variant="subtitle" gutterBottom component="div">
         Copyright © 2002-2020,Camera Gallery, C&A Marketing Inc. All Rights
           Reserved.
             </Typography>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
+import Fade from 'react-reveal/Fade';
 import {
   Button,
   Card,
@@ -22,11 +23,15 @@ const Shops = (props) => {
       <Grid item xs={12} sm={6} md={4}>
         <Card sx={{ Width: '600px', height: '490px', m:2 }}>
           <CardActionArea>
+            <Fade left>
             <img
               style={{ width: '200px', height: '200px', padding: '5px' }}
               src={img}
               alt=""
             />
+
+            </Fade>
+           
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
                 {name}
