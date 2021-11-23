@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <div style={{ backgroundColor: 'black',marginTop:"90px",borderTop:"2px solid black",paddingTop:"20px",color:"gray" }}>
       <Container>
-        <Grid container spacing={2} sx={{my:"4"}}>
-          <Grid sx={{ textAlign: 'left', ml: 3}} item xs={2}>
+        <Grid container spacing={1} sx={{my:"4",mx:"auto",display:'flex',justifyContent:'center'}}>
+          <Grid  item xs={12} md={2}>
             <Typography variant="h6" gutterBottom component="div">
               Customer Services
             </Typography>
@@ -22,7 +22,7 @@ const Footer = () => {
             </Typography>
             
           </Grid>
-          <Grid item xs={2}>
+          <Grid  item xs={12} md={2}>
           <Typography variant="h6" gutterBottom component="div">
           Our Policies
             </Typography>
@@ -36,7 +36,7 @@ const Footer = () => {
             Product Warranties 
             </Typography>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={12} md={2}>
           
            
             <Typography variant="h6" gutterBottom component="div">
@@ -51,7 +51,7 @@ const Footer = () => {
             
              
           </Grid>
-          <Grid item xs={3}>
+          <Grid  item xs={12} md={3}>
           <Typography variant="h6" gutterBottom component="div">
           Featured Catagories
             </Typography>
@@ -66,7 +66,7 @@ const Footer = () => {
            Best Camera and lances deals
             </Typography>
           </Grid>
-          <Grid item xs={2}>
+          <Grid  item xs={12} md={2}>
           <Typography variant="h6" gutterBottom component="div">
           Follow Us
             </Typography>
