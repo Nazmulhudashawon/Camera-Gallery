@@ -44,13 +44,7 @@ const Navigation = () => {
               </div>
             </div>
             <div className="col align-items-center justify-content-center">
-              <Button
-                style={{ textDecoration: 'none', paddingTop: '5px' }}
-                sx={{ color: 'tomato' }}
-                variant="text"
-              >
-               {user.displayName}
-              </Button>
+            
               <Link to="/">Home</Link>
               <Link to="/shop">Shop</Link>
               <Link to="/">Cart</Link>
