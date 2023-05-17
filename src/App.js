@@ -49,7 +49,7 @@ function App() {
             <Route exact path="/register">
               <Register></Register>
             </Route>
-            <PrivateRoute  path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <DashBoard></DashBoard>
             </PrivateRoute>
             

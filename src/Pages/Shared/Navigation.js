@@ -48,11 +48,12 @@ const Navigation = () => {
               <Link to="/">Home</Link>
               <Link to="/shop">Shop</Link>
               <Link to="/">Cart</Link>
-              <Link to="/">Blog</Link>
+              {/* <Link to="/">Blog</Link> */}
+              <Link to="/dashboard">Dashboard</Link>
 
               {user.email ? (
                 <>
-                  <Link to="/dashboard">Dashboard</Link>
+                  
                   <Link onClick={logOut} to="/">
                     Logout
                   </Link>
